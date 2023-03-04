@@ -95,7 +95,7 @@ export default function Login() {
                                 <p className="text-sm font-light text-red-500 ">
                                     Don't have an account?{" "}
                                     <a
-                                        href="#"
+                                        href="/register"
                                         className="font-medium text-red-600 hover:underline dark:text-primary-500"
                                     >
                                         Register here

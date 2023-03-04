@@ -11,9 +11,7 @@ const RecordView = (props) => {
   const [counter, setCounter] = useState(0);
 
   useEffect(() => {
-
     let intervalId;
-
     if (isActive) {
       intervalId = setInterval(() => {
         const secondCounter = counter % 60;

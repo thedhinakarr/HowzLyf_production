@@ -51,13 +51,13 @@ export default function Clip({url}) {
                 <div class=" my-3">
                     <div class="flex justify-between text-sm text-grey-darker">
                     </div>
-                    {/* <div class="mt-1">
+                    <div class="mt-1">
                         <div class="h-3 w-auto bg-gray-400 overflow-hidden mb-1.5 rounded-full">
                             <div class="w-auto h-1 rounded-full relative">
                                 <span class="w-1/2 relative h-4 bg-red-500 p-20 rounded-sm"></span>
                             </div>
                         </div>
-                    </div> */}
+                    </div>
 
 
                 </div>

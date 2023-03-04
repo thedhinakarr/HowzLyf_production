@@ -32,21 +32,17 @@ function AudioRecorder() {
         <div>
             <ReactMediaRecorder
                 audio
-                render={({ startRecording, stopRecording, mediaBlobUrl }) => (
+                render={({ startRecording, stopRecording, pauseRecording, mediaBlobUrl }) => (
                     <div>
-                        <button onClick={startRecording}>Start Recording</button>
-                        <button onClick={stopRecording}>Stop Recording</button>
-                        {mediaBlobUrl && <audio src={mediaBlobUrl} controls />}
+                        <button className='border border-white mr-1 p-2' onClick={startRecording}>Start Recording</button>
+                        <button className='border border-white mr-1  p-2' onClick={stopRecording}>Stop and post</button>
+                        {mediaBlobUrl && <><p>Recorded audio:</p><audio src={mediaBlobUrl} controls /></>}
+                        
                     </div>
                 )}
                 onStop={handleStop}
             />
-            {audioSrc && (
-                <div>
-                    <p>Recorded Audio:</p>
-                    <audio src={audioSrc} controls />
-                </div>
-            )}
+            
         </div>
     );
 }

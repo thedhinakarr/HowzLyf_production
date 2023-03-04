@@ -2,6 +2,7 @@ import express from "express";
 import config from "config";
 import User from "../../models/Users/index.js";
 import bcrypt from "bcrypt"
+import multer from "multer";
 import sendMail from "../../utils/mailer.js";
 import { registerValidations, loginValidations, errorMiddleWare } from "../../middleware/validations/index.js";
 import { randomString } from "../../utils/randomString.js";
@@ -11,6 +12,22 @@ import { isAuthenticated } from "../../middleware/auth/index.js";
 const router = express.Router();
 
 let URL = config.get("URL");
+
+const storage = multer.diskStorage({
+
+    destination: function (req, file, cb) {
+      cb(null, "./profilepics/");
+    },
+  
+    filename: function (req, file, cb) {
+      let ext = file.mimetype.split("/")[1];
+      cb(null, file.fieldname + "-" + Date.now() + "." + "wav");
+    },
+  
+  });
+  
+  const upload = multer({ storage: storage });
+
 
 
 router.post("/register", registerValidations(), errorMiddleWare, async (req, res) => {
@@ -63,6 +80,29 @@ router.get("/getUserDetails",async (req,res)=>{
     try {
         console.log(req.query)
         let findUser = await User.findOne({ _id: req.query.producedBy});
+        console.log(findUser)
+        return res.status(200).json(findUser)
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({message:"Internal Server error"});
+    }
+})
+
+router.get("/userSearchDetails", async (req,res)=>{
+    try {
+        console.log(req.query.searchUser);
+        let findUser = await User.find({ userName: req.query.searchUser })
+        console.log(findUser);
+        return res.status(200).json(findUser)
+    } catch (error) {
+        
+    }
+})
+
+router.get("/getUserDetailsByToken",isAuthenticated,async (req,res)=>{
+    try {
+        console.log(req.payload)
+        let findUser = await User.findOne({ _id: req.payload.id } );
         console.log(findUser)
         return res.status(200).json(findUser)
     } catch (error) {

@@ -11,6 +11,12 @@ let userSchema = new mongoose.Schema({
         required:true,
         maxlength: 30
     },
+    
+    bioUrl: {
+        type: String,
+        required: false,
+    },
+
     email:{
         type: String,
         required: true,

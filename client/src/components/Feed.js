@@ -1,12 +1,10 @@
 import React from 'react'
-
-import Clip from './Clip';
-import RecordView from './RecordView';
 import AudioRecorder from './RecordView2';
 import axios from 'axios';
 import Post from './Post';
+import { useState, useEffect } from 'react';
 
-import { useState, useEffect } from 'react'
+
 
 export default function Feed() {
 
@@ -15,6 +13,26 @@ export default function Feed() {
     const[audio,setAudio]= useState([])
     const[user,setUser] = useState([])
     const [x, setX] = useState(false)
+
+ function OnChangeHandler(e){
+        setUser({
+            ...user,
+            [e.target.name]:e.target.value
+        })
+        // let data = await axios.get(`/api/user/userSearchDetails?searchUser=${user}`)
+        // console.log(data)
+    }
+
+//User Search function.
+ async function onSubmitHandler(e){
+    try {
+        
+    } catch (error) {
+        
+    }
+ }
+
+
 
     useEffect(() => {
         
@@ -55,6 +73,7 @@ export default function Feed() {
     , [audio])
 
     audio.reverse();
+
     audio.forEach(async (ele) => {
         libs.push(
             <Post audio={ele} user={ele.producedBy}  />
@@ -83,26 +102,12 @@ export default function Feed() {
                             Home
                         </a>
 
-                        <a
-                            className="px-3 py-2 mt-2 text-lg font-medium rounded-sm hover:bg-gray-300"
-                            href="#"
-                        >
-                            Notifications
-                        </a>
 
                         <a
                             className="px-3 py-2 mt-2 text-lg font-medium rounded-sm hover:bg-gray-300"
                             href="#"
                         >
                             Converse
-                        </a>
-
-
-                        <a
-                            className="px-3 py-2 mt-2 text-lg font-medium rounded-sm hover:bg-gray-300"
-                            href="#"
-                        >
-                            Profile
                         </a>
                         <a
                             className="flex px-3 py-2 mt-auto text-lg rounded-sm font-medium hover:bg-gray-200"
@@ -123,13 +128,13 @@ export default function Feed() {
 
 
                         <div className="flex justify-between flex-shrink-0 px-8 py-4 border-b border-rose-700">
-                            <h1 className="text-xl font-semibold ">How's life Dhinakar?</h1>
+                            <h1 className="text-xl font-semibold ">How's life ?</h1>
                         </div>
 
                         <div className="flex-grow h-0 overflow-auto">
-
-                            <button onClick={onNewPostClick} className='text font-semibold ml-10 mt-5 text-white'> {x ? "Don't Post" : "New Post"}</button>
-
+                           
+                            <button onClick={onNewPostClick} className='text border-2 border-red-700 p-3 font-semibold ml-10 mt-5 text-white'> {x ? "Don't Post" : "New Post"}</button>
+                            <p className='m-5'>There's no pause option, you can only stop and post.<br/> It'll be spontaneous that way, you can click don't post if you wish to not post anything.</p>
                             <div className="flex w-full p-8 border-b-2 border-rose-700">
 
                                 <div className="flex  flex-grow ml-4">
@@ -142,8 +147,6 @@ export default function Feed() {
 
                             {libs}
 
-
-
                         </div>
                     </div>
 
@@ -151,12 +154,13 @@ export default function Feed() {
                     <div className="flex flex-col flex-shrink-0 w-1/4 py-4 pl-4">
 
                         <input
-                            className="flex placeholder-red-700 items-center h-8 px-2 border border-gray-500 rounded-sm"
+                            onChange={OnChangeHandler}
+                            name='search'
+                            className="flex placeholder-red-700 text-black items-center h-8 px-2 border border-gray-500 rounded-sm"
                             type="search"
                             placeholder="Search…"
                         />
                    
-
                         {/* <div>
                             <h3 className="mt-6 font-semibold">Trending</h3>
                             <div className="flex w-full py-4 border-b border-rose-700">

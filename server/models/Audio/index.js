@@ -23,6 +23,12 @@ let audioSchema = new mongoose.Schema({
     default: 0
   },
 
+  comments:{
+    type: mongoose.Schema.Types.ObjectId,
+    ref:"Comment",
+    default:[]
+  }
+
 }, { timestamps: true })
 
 let Audio = mongoose.model("Audio", audioSchema);

@@ -25,18 +25,14 @@ export default function CommentsTesting() {
                 <span className="flex-shrink-0 w-12 h-12 bg-gray-400 rounded-full" />
                 <div className="flex flex-col flex-grow ml-4">
                     <div className="flex">
-                        <span className="font-semibold">Username</span>
+                        <span className="text-white font-semibold">Username</span>
                         <span className="ml-1 text-rose-700">@username</span>
                         <span className="ml-auto text-sm">Just now</span>
                     </div>
                     <p className="mt-1">
-                        <Clip />
-
                     </p>
                   
                     <div className="flex mt-2">
-
-
 
                         <Accordion open={open === 1} className="text-white">
                             <AccordionHeader onClick={() => handleOpen(1)} className="text-white">
@@ -47,9 +43,7 @@ export default function CommentsTesting() {
                                 </button>
                             </AccordionHeader>
                             <AccordionBody >
-                                <Post />
-                                <Post />
-                                <Post />
+                             
                             </AccordionBody>
                         </Accordion>
 

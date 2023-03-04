@@ -1,8 +1,8 @@
 import React from 'react'
-
+import { useNavigate } from 'react-router-dom';
 export default function LandingPage() {
+    let navigate=useNavigate();
     return (
-
 
         <div className="py-8 px-4 bg-black mx-auto justify-items-center h-screen w-screen text-center lg:py-16 lg:px-12">
             <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-red-500 md:text-5xl lg:text-6xl "> ______________HowzLyf______________</h1>

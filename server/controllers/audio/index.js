@@ -27,6 +27,7 @@ const storage = multer.diskStorage({
 
 router.get("/viewAll",isAuthenticated,async (req,res)=>{
     try {
+        console.log(req.payload);
         let x = await Audio.find()
         res.status(200).json({ message: "Task successfully added." , x});
     } catch (error) {
